@@ -34,7 +34,7 @@ name:"Community Impact:",
         </p>
       <div className="max-w-3xl mx-auto text-center px-6">
         
- {/* Goal */}
+ {/* Goal Name */}
  <p className="mt-4 text-blue-800 font-semibold">
           - {testimonials[current].name}
         </p>

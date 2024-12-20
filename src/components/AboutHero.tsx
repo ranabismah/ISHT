@@ -6,7 +6,7 @@ const HeroSection = () => (
       {/* Left Section: Mission and Vision */}
       <div className="lg:w-1/2 text-center lg:text-left space-y-8">
         <h1 className="text-5xl font-extrabold text-gray-200 leading-tight">
-          About Us
+          About Us <span className='text-blue-200'>!</span>
         </h1>
         
         {/* Mission Statement */}
