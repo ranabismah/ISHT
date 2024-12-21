@@ -25,7 +25,7 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6">
-          {["Home", "About", "Services", "Contact"].map((item, index) => (
+          {["Home", "About", "Programs", "Contact"].map((item, index) => (
             <li key={index}>
               <Link
                 href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
