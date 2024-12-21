@@ -13,12 +13,7 @@ const RationDistribution = () => {
           <p className="text-lg text-gray-600">
             In addition to our educational initiatives, we conduct monthly ration drives to support families facing food scarcity. Through these drives, we distribute essential food supplies to those in need, ensuring that no child goes to bed hungry. Our commitment to uplifting students in need extends beyond education, as we strive to create a supportive community where families can thrive together.
           </p>
-          <a
-            href="/page4"
-            className="inline-block py-3 px-6 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
-          >
-            Tap for more information
-          </a>
+          
         </div>
         {/* Image Section */}
         <div

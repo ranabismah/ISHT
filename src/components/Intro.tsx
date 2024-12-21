@@ -1,11 +1,8 @@
 
 const Intro = () => (
   <section className="relative bg-blue-900 text-white py-24 px-6 lg:px-32 text-center flex flex-col items-center">
-    {/* Background Image with Overlay */}
-    <div
-      className="absolute inset-0 bg-cover bg-center opacity-60"
-      style={{ backgroundImage: 'url(/images/hero-bg.jpg)' }}
-    />
+   
+    
     <div className="absolute inset-0 bg-black opacity-40" /> {/* Added dark overlay */}
     
     <div className="relative z-10 space-y-6">
@@ -37,7 +34,7 @@ const Intro = () => (
           Donate Now
         </a>
       </div>
-    </div>
+   </div>
   </section>
 );
 

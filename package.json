@@ -11,11 +11,15 @@
   "dependencies": {
     "framer-motion": "^11.15.0",
     "next": "15.1.1",
+    "nodemailer": "^6.9.16",
+    "nodemailer-sendgrid": "^1.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/nodemailer": "^6.4.17",
+    "@types/nodemailer-sendgrid": "^1.0.3",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "postcss": "^8",
