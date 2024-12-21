@@ -11,7 +11,7 @@ const page = () => {
       <Intro/>
       <Services/>
       <Testimonials/>
-      <CallToAction/>
+     < div className='py-4'><CallToAction/></div>
      
     </div>
   )

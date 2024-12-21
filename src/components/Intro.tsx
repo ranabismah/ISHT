@@ -28,7 +28,7 @@ const Intro = () => (
       {/* Call-to-Action Button */}
       <div>
         <a
-          href="#donate"
+          href="/contact"
           className="inline-block py-3 px-8 text-lg font-semibold text-blue-900 bg-white rounded-lg shadow-lg hover:bg-blue-500 transition duration-300"
         >
           Donate Now
