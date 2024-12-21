@@ -1,6 +1,5 @@
-// src/components/Navbar.tsx
+
 "use client";
-// src/components/Navbar.tsx
 import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";

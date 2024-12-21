@@ -1,5 +1,3 @@
-// components/Services.tsx
-
 const Services = () => (
     <section className="py-16 bg-white">
       <h2 className="text-3xl font-semibold text-center text-blue-900 mb-12">Our Services</h2>

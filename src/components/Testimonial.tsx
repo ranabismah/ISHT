@@ -1,4 +1,3 @@
-// components/Testimonials.tsx
 "use client";
 import { useState } from 'react';
 
@@ -8,12 +7,12 @@ const Testimonials = () => {
     {
       quote: "Iqra Sweet Home Trust has been a beacon of hope in my life. The support they provided helped me not only survive but thrive.",
       name: "Student Name",
-      image: "/logo.png", // Add image path for the student
+      image: "/logo.png", 
     },
     {
       quote: "The ration drive from ISHT helped my family when we were struggling. I will forever be grateful for their help.",
       name: "Parent Name",
-      image: "/logo.png", // Add image path for the parent
+      image: "/logo.png", 
     },
   ];
 

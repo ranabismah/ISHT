@@ -1,4 +1,3 @@
-// components/Intro.tsx
 
 const Intro = () => (
   <section className="relative bg-blue-900 text-white py-24 px-6 lg:px-32 text-center flex flex-col items-center">
