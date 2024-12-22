@@ -1,124 +1,134 @@
 "use client";
 
-import { useState } from "react";
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { useState } from 'react';
 
-export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    message: "",
-  });
-  const [status, setStatus] = useState<string | null>(null);
+type FormData = {
+  name: string;
+  phone: string;
+  email: string;
+  message: string;
+};
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+const Contact = () => {
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("Sending...");
+  const onSubmit: SubmitHandler<FormData> = async (data: any) => {
+    setIsSubmitting(true);
+    setSuccessMessage('');
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-    const result = await response.json();
-
-    if (response.ok) {
-      setStatus("Message sent successfully!");
-    } else {
-      setStatus(result.error || "Error sending message.");
+      if (response.ok) {
+        setSuccessMessage('Your message has been sent successfully!');
+        reset();
+      } else {
+        setSuccessMessage('Failed to send your message. Please try again.');
+      }
+    } catch (error) {
+      setSuccessMessage('Error occurred while sending your message.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-2xl font-bold text-center mb-6">Contact Us</h1>
-      
-      {/* Contact Details */}
-      <div className="bg-gray-100 p-6 rounded-md mb-6">
-        <h2 className="text-xl font-bold mb-4">Contact Details</h2>
-        <p><strong>Address:</strong> Iqra Sweet Home, House No. R-18, Phase 1, Defence View, Shaheed-eMillat Road, Ext. Karachi.</p>
-        <p><strong>Phone:</strong> 021-38892198 Ext. 9933</p>
-        <p><strong>WhatsApp:</strong> 92-328-2288900</p>
-        <p>
+    <div className="min-h-screen bg-gray-100 p-8">
+      <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-8">
+        <h1 className="text-3xl font-bold text-gray-800 mb-4">Contact Us</h1>
+        <p className="text-gray-600 mb-6">
+          Please fill out the form below, and we'll get back to you shortly.
+        </p>
+        {successMessage && (
+          <p className={`mb-4 text-sm ${successMessage.includes('successfully') ? 'text-green-500' : 'text-red-500'}`}>
+            {successMessage}
+          </p>
+        )}
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <div>
+            <label className="block text-gray-700 font-medium">Name</label>
+            <input
+              type="text"
+              {...register('name', { required: 'Name is required' })}
+              className={`w-full px-4 py-2 border rounded-md focus:outline-none ${
+                errors.name ? 'border-red-500' : 'border-gray-300'
+              }`}
+            />
+            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
+          </div>
+
+          <div>
+            <label className="block text-gray-700 font-medium">Phone Number</label>
+            <input
+              type="text"
+              {...register('phone', { required: 'Phone number is required' })}
+              className={`w-full px-4 py-2 border rounded-md focus:outline-none ${
+                errors.phone ? 'border-red-500' : 'border-gray-300'
+              }`}
+            />
+            {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>}
+          </div>
+
+          <div>
+            <label className="block text-gray-700 font-medium">Email</label>
+            <input
+              type="email"
+              {...register('email', { required: 'Email is required' })}
+              className={`w-full px-4 py-2 border rounded-md focus:outline-none ${
+                errors.email ? 'border-red-500' : 'border-gray-300'
+              }`}
+            />
+            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+          </div>
+
+          <div>
+            <label className="block text-gray-700 font-medium">Message</label>
+            <textarea
+              {...register('message', { required: 'Message is required' })}
+              className={`w-full px-4 py-2 border rounded-md focus:outline-none ${
+                errors.message ? 'border-red-500' : 'border-gray-300'
+              }`}
+              rows={5}
+            />
+            {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
+          </div>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full bg-blue-500 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-600 transition disabled:opacity-50"
+          >
+            {isSubmitting ? 'Sending...' : 'Send & Connect With Us'}
+          </button>
+        </form>
+        <div className="mt-8">
+          <h2 className="text-xl font-bold text-gray-800">Contact Details</h2>
+          <p className="text-gray-600">
+            Address: Iqra Sweet Home, House No. R-18, Phase 1, Defence View, Shaheed-e-Millat Road, Ext. Karachi.
+          </p>
+          <p className="text-gray-600">Phone: 021-38892198 Ext. 9933</p>
+          <p className="text-gray-600">WhatsApp: 92-328-2288900</p>
           <a
-            href="https://www.google.com/maps/place/Iqra+Sweet+Home"
+            href="https://www.google.com/maps?q=Iqra+Sweet+Home"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600"
+            className="text-blue-500 hover:underline"
           >
-            View on Google Maps
+            Google Map Link: Iqra Sweet Home Location
           </a>
-        </p>
+        </div>
       </div>
-
-      {/* Contact Form */}
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block font-medium" htmlFor="name">Name</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full p-3 border border-gray-300 rounded"
-            required
-          />
-        </div>
-
-        <div>
-          <label className="block font-medium" htmlFor="phone">Phone Number</label>
-          <input
-            type="text"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full p-3 border border-gray-300 rounded"
-            required
-          />
-        </div>
-
-        <div>
-          <label className="block font-medium" htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full p-3 border border-gray-300 rounded"
-            required
-          />
-        </div>
-
-        <div>
-          <label className="block font-medium" htmlFor="message">Message</label>
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            className="w-full p-3 border border-gray-300 rounded"
-            rows={5}
-            required
-          />
-        </div>
-
-        <div className="text-center">
-          <button type="submit" className="bg-blue-500 text-white px-6 py-2 rounded">
-            Send & Connect With Us
-          </button>
-        </div>
-      </form>
-
-      {status && <div className="mt-4 text-center text-lg">{status}</div>}
     </div>
   );
-}
+};
+
+export default Contact;

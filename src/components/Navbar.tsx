@@ -57,7 +57,7 @@ export default function Navbar() {
       {menuOpen && (
         <div className="md:hidden bg-blue-900 text-white">
           <ul className="flex flex-col space-y-4 py-4 px-6">
-            {["Home", "About", "Services", "Contact"].map((item, index) => (
+            {["Home", "About", "Programs", "Contact"].map((item, index) => (
               <li key={index}>
                 <Link
                   href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
