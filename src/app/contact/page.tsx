@@ -15,7 +15,7 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
 
-  const onSubmit: SubmitHandler<FormData> = async (data: any) => {
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
     setIsSubmitting(true);
     setSuccessMessage('');
 
