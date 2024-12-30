@@ -2,19 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "swiper/swiper-bundle.css";
-
-@keyframes fadeIn {
-  from {
+@keyframes slideUpFadeIn {
+  0% {
     opacity: 0;
     transform: translateY(20px);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-.animate-fadeIn {
-  animation: fadeIn 1s ease-out;
+.animate-slideUpFadeIn {
+  animation: slideUpFadeIn 1s ease-out forwards;
 }
+
