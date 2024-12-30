@@ -1,4 +1,3 @@
-
 "use client";
 import Link from "next/link";
 import { useState } from "react";
@@ -8,16 +7,16 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-blue-900 text-white shadow-md sticky top-0 z-50">
+    <header className="bg-white text-blue-900 shadow-md sticky top-0 z-50">
       <nav className="container mx-auto flex justify-between items-center py-4 px-6 lg:px-12">
         {/* Logo Section */}
         <div className="flex items-center space-x-3 overflow-hidden relative">
           <Image
             src="/logo.png"
             alt="Iqra Sweet Home Logo"
-            width={100} 
-            height={90} 
-            className="rounded-full   transform transition-all duration-300 hover:scale-105"
+            width={100}
+            height={90}
+            className="rounded-full transform transition-transform duration-500 hover:rotate-12 hover:scale-110 hover:shadow-lg"
           />
           <h1 className="text-2xl font-bold">Iqra Sweet Home</h1>
         </div>
@@ -25,13 +24,15 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6">
           {["Home", "About", "Programs", "Contact"].map((item, index) => (
-            <li key={index}>
+            <li key={index} className="relative group">
               <Link
                 href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                className="hover:text-gray-300 transition duration-300"
+                className="transition duration-300 group-hover:text-blue-700"
               >
                 {item}
               </Link>
+              {/* hover underline */}
+              <span className="absolute left-0 bottom-[-2px] w-0 h-0.5 bg-blue-700 transition-all duration-300 group-hover:w-full"></span>
             </li>
           ))}
         </ul>
@@ -45,9 +46,9 @@ export default function Navbar() {
             <span className="text-2xl">&times;</span> // Close icon
           ) : (
             <>
-              <span className="block w-8 h-0.5 bg-white mb-1"></span>
-              <span className="block w-8 h-0.5 bg-white mb-1"></span>
-              <span className="block w-8 h-0.5 bg-white"></span>
+              <span className="block w-8 h-0.5 bg-blue-900 mb-1"></span>
+              <span className="block w-8 h-0.5 bg-blue-900 mb-1"></span>
+              <span className="block w-8 h-0.5 bg-blue-900"></span>
             </>
           )}
         </div>
@@ -55,17 +56,19 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-blue-900 text-white">
+        <div className="md:hidden bg-white text-blue-900">
           <ul className="flex flex-col space-y-4 py-4 px-6">
             {["Home", "About", "Programs", "Contact"].map((item, index) => (
-              <li key={index}>
+              <li key={index} className="relative group">
                 <Link
                   href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                  className="block hover:bg-blue-800 py-2 px-4 rounded-lg transition duration-300"
+                  className="block transition duration-300 group-hover:text-blue-700"
                   onClick={() => setMenuOpen(false)}
                 >
                   {item}
                 </Link>
+                {/* hover underline */}
+                <span className="absolute left-0 bottom-[-2px] w-0 h-0.5 bg-blue-700 transition-all duration-300 group-hover:w-full"></span>
               </li>
             ))}
           </ul>
@@ -74,3 +77,5 @@ export default function Navbar() {
     </header>
   );
 }
+
+

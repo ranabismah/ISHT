@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "swiper/swiper-bundle.css";
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -16,4 +18,3 @@
 .animate-fadeIn {
   animation: fadeIn 1s ease-out;
 }
-
