@@ -3,14 +3,10 @@ const CallToAction = () => {
     const buttons = [
       {
         title: "Apply for School Scholarship",
-        link: "https://docs.google.com/forms/d/e/1FAIpQLScV_9DaHPUF2_xX_Y8ppsrIV0c-OdgWFDY6E0t8TpG3WkkszA/viewform?pli=1",
+        link: "https://tinyurl.com/SweetHomesScholarshipProgram ",
       },
       {
         title: "Apply for Undergraduate Scholarship",
-        link: "https://docs.google.com/forms/d/e/1FAIpQLScV_9DaHPUF2_xX_Y8ppsrIV0c-OdgWFDY6E0t8TpG3WkkszA/viewform?pli=1",
-      },
-      {
-        title: "Volunteer for Ration Drive",
         link: "https://docs.google.com/forms/d/e/1FAIpQLScV_9DaHPUF2_xX_Y8ppsrIV0c-OdgWFDY6E0t8TpG3WkkszA/viewform?pli=1",
       },
     ];
