@@ -66,7 +66,7 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Ration Distribution Service */}
+        {/* Ration Distribution Service .*/}
         <div className="group relative p-6 bg-blue-50 rounded-lg shadow-xl hover:scale-105 hover:shadow-2xl transition duration-300 ease-in-out">
           <h3 className="text-3xl font-semibold text-blue-900">
             Ration Distribution
